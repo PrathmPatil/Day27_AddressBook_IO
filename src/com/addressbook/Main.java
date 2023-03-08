@@ -1,13 +1,16 @@
 package com.addressbook;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
 
-	  static Contacts contact;
+	 static Contacts contact;
+	    static ArrayList<Contacts> contacts = new ArrayList<Contacts>();
+	    static Main addressbook=new Main();
 	    public void uc1_createContact(){
-	        Scanner sc= new Scanner(System.in);       
+	        Scanner sc= new Scanner(System.in);
 	        System.out.println("Enter First Name");
 	        String firstName=sc.nextLine();
 	        System.out.println("Enter Last Name");
@@ -24,14 +27,31 @@ public class Main {
 	        String phoneNumber=sc.nextLine();
 	        System.out.println("Enter Email");
 	        String email=sc.nextLine();
-	        contact=new Contacts(firstName,lastName,address,city,state,zip,phoneNumber,email);
-	        
+	        contact=new Contacts(firstName,lastName,address,city,state,zip,phoneNumber,email); 
+	    }
+	    public void uc2_addContact() {
+	        contacts.add(contact);
+	    }
+	    public static void main() {
+	    	System.out.println("Enter \n 1.Add Contact");
+	    	Scanner sc=new Scanner(System.in);
+	    	int choose=sc.nextInt();
+	    	switch(choose)
+	    	{
+	    	case 1:
+         	addressbook.uc1_createContact();
+         	addressbook.uc2_addContact();
+         	main();
+             break;
+         default:
+             	System.out.println("Please enter valid number.");
+             	break;
+	    		
+	    	}
 	    }
 	    public static void main(String[] args) {
 	        System.out.println("Welcome to Address Book");
 	        System.out.println("***********************");
-	        Main ab=new Main();
-	        ab.uc1_createContact();
-	        System.out.println(contact);
+	        main();
 	    }
 }
