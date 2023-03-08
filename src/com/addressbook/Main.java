@@ -1,12 +1,23 @@
 package com.addressbook;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Main extends ContactOperations{
 	
-	    public static void main() {
+	    public static void main() throws Exception{
 	    	Main addressbook=new Main();
-	    	System.out.println("Enter \n 1.Add Contact \n2.Edit Contact \n3.Display \n4.Delete Contact");
+	    	System.out.println("1.Add Contact\n" +
+                    "2.Edit Contact\n" +
+                    "3.Display\n" +
+                    "4.Delete\n" +
+                    "5.Check by City or State\n" +
+                    "6.Dictionary for city or state\n" +
+                    "7.Count for city or state\n" +
+                    "8.Sort the list\n" +
+                    "9.Write into File\n" +
+                    "10.Read from file\n");
 	    	Scanner sc=new Scanner(System.in);
 	    	int choose=sc.nextInt();
 	    	switch(choose)
@@ -21,7 +32,7 @@ public class Main extends ContactOperations{
 	    		main();
               break;
 	    	case 3:
-	    		System.out.println(contacts);
+	    		addressbook.displayContact();
 	    		break;
 	    	case 4:
 	    		if(contacts.size()>0)
@@ -94,7 +105,23 @@ public class Main extends ContactOperations{
                          System.out.println("Enter correct option");
                          break;
                  }
-
+            	 main();
+            	 break;
+             case 9:
+                 FileWriter fileWriter = new FileWriter("C:\\Users\\Prathmesh Patil\\eclipse-workspace\\Sumit\\src\\Day27_AddressBook_IO\\src\\com\\addressbook\\ContactsOfAddressbook.txt");
+                 for(Contacts cont : contacts){
+                     fileWriter.write(cont.toString());
+                     System.out.println(cont.toString());
+                     fileWriter.close();
+                 }
+            	 main();
+                 break;
+             case 10:
+                 File file = new File("C:\\Users\\Prathmesh Patil\\eclipse-workspace\\Sumit\\src\\Day27_AddressBook_IO\\src\\com\\addressbook\\ContactsOfAddressbook.txt");
+                 Scanner scanner = new Scanner(file);
+                 while(scanner.hasNextLine()){
+                     System.out.println(scanner.nextLine());
+                 }
             	 main();
             	 break;
           default:
@@ -106,6 +133,10 @@ public class Main extends ContactOperations{
 	    public static void main(String[] args) {
 	        System.out.println("Welcome to Address Book");
 	        System.out.println("***********************");
-	        main();
+	        try {
+				main();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	    }
 }
