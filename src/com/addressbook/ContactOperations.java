@@ -150,6 +150,21 @@ public class ContactOperations {
 	        sortedNameList.forEach(x -> System.out.println(x));
 	        System.out.println();
 	    }
+	    public void uc12_sortByCity(){
+	        List<Contacts> sortedList = contacts.stream().sorted(Comparator.comparing(Contacts::getFirstName)).collect(Collectors.toList());
+	        sortedList.forEach(x -> System.out.println(x));
+	        System.out.println();
+	    }
+	    public void uc12_sortByState(){
+	        List<Contacts> sortedList = contacts.stream().sorted(Comparator.comparing(Contacts::getFirstName)).collect(Collectors.toList());
+	        sortedList.forEach(x -> System.out.println(x));
+	        System.out.println();
+	    }
+	    public void uc12_sortByZip(){
+	        List<Contacts> sortedNameList = contacts.stream().sorted(Comparator.comparing(Contacts::getFirstName)).collect(Collectors.toList());
+	        sortedNameList.forEach(x -> System.out.println(x));
+	        System.out.println();
+	    }
 	    public void displayContact(){
 	        System.out.println("Enter the name of contact you want to delete");
 	        name=sc.next();

@@ -71,7 +71,30 @@ public class Main extends ContactOperations{
                  }
                  break;
              case 8:
-            	 addressbook.uc11_sortByName();
+                 System.out.println("Select option\n" +
+                         "1.By Name\n" +
+                         "2.By City\n" +
+                         "3.By State\n" +
+                         "4.By ZipCode");
+                 int sortOption = sc.nextInt();
+                 switch (sortOption){
+                     case 1:
+                    	 addressbook.uc11_sortByName();
+                         break;
+                     case 2:
+                    	 addressbook.uc12_sortByCity();
+                         break;
+                     case 3:
+                    	 addressbook.uc12_sortByState();
+                         break;
+                     case 4:
+                    	 addressbook.uc12_sortByZip();
+                         break;
+                     default:
+                         System.out.println("Enter correct option");
+                         break;
+                 }
+
             	 main();
             	 break;
           default:
