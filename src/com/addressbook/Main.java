@@ -92,10 +92,22 @@ public class Main {
 	                System.out.println("Cannot find name..."+"\n Please enter valid name.");
 	                uc3_editContact();
 	            }
-	        
 	        }
+	    
+	public void uc4_deleteContact() {
+		System.out.println("Enter first name which contact have delete: ");
+		name=sc.next();
+		if(contacts.get(0).getFirstName().equalsIgnoreCase(name)) {
+			contacts.remove(0);
+			System.out.println("Contact deleted successfully.");
+		}
+		else {
+			System.out.println("Plese enter valid name.");
+			uc4_deleteContact();
+		}
+	}
 	    public static void main() {
-	    	System.out.println("Enter \n 1.Add Contact \n2.Edit Contact \n3.Display");
+	    	System.out.println("Enter \n 1.Add Contact \n2.Edit Contact \n3.Display \n4.Delete Contact");
 	    	Scanner sc=new Scanner(System.in);
 	    	int choose=sc.nextInt();
 	    	switch(choose)
@@ -111,6 +123,11 @@ public class Main {
               break;
 	    	case 3:
 	    		System.out.println(contacts);
+	    		break;
+	    	case 4:
+	    		addressbook.uc4_deleteContact();
+	    		main();
+	    		break;
           default:
               	System.out.println("Please enter valid number.");
               	break;
