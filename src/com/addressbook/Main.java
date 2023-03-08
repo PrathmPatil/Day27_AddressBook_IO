@@ -40,10 +40,12 @@ public class Main extends ContactOperations{
                      System.out.println("Enter the name of city ");
                      String city=sc.next();
                      addressbook.uc8_checkByCity(city).forEach(checkCity -> System.out.println(checkCity));
+                     main();
                  } else if (cityOrState == 2) {
                      System.out.println("Enter the name of state ");
                      String state=sc.next();
                      addressbook.uc8_checkByState(state).forEach(checkState -> System.out.println(checkState));
+                     main();
                  }
                  break;
              case 6:
@@ -51,8 +53,10 @@ public class Main extends ContactOperations{
                  int dictionaryCityOrState = sc.nextInt();
                  if(dictionaryCityOrState == 1){
                 	 addressbook.uc9_cityDictionary();
+                	 main();
                  } else if (dictionaryCityOrState == 2) {
                 	 addressbook.uc9_stateDictionary();
+                	 main();
                  }
                  break;
              case 7:
@@ -60,10 +64,16 @@ public class Main extends ContactOperations{
                  int countCityOrState = sc.nextInt();
                  if(countCityOrState == 1){
                 	 addressbook.uc10_cityCount();
+                	 main();
                  } else if (countCityOrState == 2) {
                 	 addressbook.uc10_stateCount();
+                	 main();
                  }
                  break;
+             case 8:
+            	 addressbook.uc11_sortByName();
+            	 main();
+            	 break;
           default:
               	System.out.println("Please enter valid number.");
               	break;

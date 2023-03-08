@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -143,6 +144,11 @@ public class ContactOperations {
 	        String state = sc.next();
 	        long stateCount = contacts.stream().filter(checkState -> checkState.getState().equalsIgnoreCase(state)).count();
 	        System.out.println("Count of " + state +" is " + sc);
+	    }
+	    public void uc11_sortByName(){
+	        List<Contacts> sortedNameList = contacts.stream().sorted(Comparator.comparing(Contacts::getFirstName)).collect(Collectors.toList());
+	        sortedNameList.forEach(x -> System.out.println(x));
+	        System.out.println();
 	    }
 	    public void displayContact(){
 	        System.out.println("Enter the name of contact you want to delete");
