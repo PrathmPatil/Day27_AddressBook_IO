@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -10,6 +11,8 @@ public class ContactOperations {
 	 static Contacts contact;
 	    String name;
 	    int count;
+	    static HashMap<String, List<Contacts>> stateDictionary = new HashMap<>();
+	    static HashMap<String, List<Contacts>> cityDictionary = new HashMap<>();
 	    Scanner sc= new Scanner(System.in);
 	    static ArrayList<Contacts> contacts = new ArrayList<Contacts>();
 	    public void uc1_createContact(){
@@ -107,19 +110,28 @@ public class ContactOperations {
 	            }
 	        }
 	    }
-	    public void uc8_checkByCity(){
-	        System.out.println("Enter the name of city ");
-	        String city=sc.next();
+	    public List<Contacts> uc8_checkByCity(String city){
 	        List<Contacts> checkByCity = contacts.stream().filter(checkCity -> checkCity.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
-	        checkByCity.forEach(checkCity -> System.out.println(checkCity));
+	        return checkByCity;
 	    }
-	    public void uc8_checkByState(){
-	        System.out.println("Enter the name of state ");
-	        String state=sc.next();
+	    public List<Contacts> uc8_checkByState(String state){
 	        List<Contacts> checkByState = contacts.stream().filter(checkState -> checkState.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
-	        checkByState.forEach(checkState -> System.out.println(checkState));
+	        return checkByState;
 	    }
-
+	    public void uc9_cityDictionary(){
+	        System.out.println("Enter city");
+	        String city = sc.next();
+	        List<Contacts> cityList = uc8_checkByState(city);
+	        stateDictionary.put(city, cityList);
+	        stateDictionary.get(city).forEach(cities -> System.out.println(cities));
+	    }
+	    public void uc9_stateDictionary(){
+	        System.out.println("Enter state");
+	        String state = sc.next();
+	        List<Contacts> statesList = uc8_checkByState(state);
+	        stateDictionary.put(state, statesList);
+	        stateDictionary.get(state).forEach(states -> System.out.println(states));
+	    }
 	    public void displayContact(){
 	        System.out.println("Enter the name of contact you want to delete");
 	        name=sc.next();

@@ -1,6 +1,5 @@
 package com.addressbook;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main extends ContactOperations{
@@ -34,15 +33,28 @@ public class Main extends ContactOperations{
 	    			System.out.println("Contacts list is empty.");
 	    		}
 	    		break;
-	    	case 5:
-                System.out.println("Enter 1 for City and 2 for State");
-                int cityOrState = sc.nextInt();
-                if(cityOrState == 1){
-                	addressbook.uc8_checkByCity();
-                } else if (cityOrState == 2) {
-                	addressbook.uc8_checkByState();
-                }
-                break;
+	    	 case 5:
+                 System.out.println("Enter 1 for City and 2 for State");
+                 int cityOrState = sc.nextInt();
+                 if(cityOrState == 1){
+                     System.out.println("Enter the name of city ");
+                     String city=sc.next();
+                     addressbook.uc8_checkByCity(city).forEach(checkCity -> System.out.println(checkCity));
+                 } else if (cityOrState == 2) {
+                     System.out.println("Enter the name of state ");
+                     String state=sc.next();
+                     addressbook.uc8_checkByState(state).forEach(checkState -> System.out.println(checkState));
+                 }
+                 break;
+             case 6:
+                 System.out.println("Enter 1 for City and 2 for State");
+                 int dictionaryCityOrState = sc.nextInt();
+                 if(dictionaryCityOrState == 1){
+                	 addressbook.uc9_cityDictionary();
+                 } else if (dictionaryCityOrState == 2) {
+                	 addressbook.uc9_stateDictionary();
+                 }
+                 break;
           default:
               	System.out.println("Please enter valid number.");
               	break;
