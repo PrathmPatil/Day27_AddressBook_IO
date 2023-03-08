@@ -55,6 +55,15 @@ public class Main extends ContactOperations{
                 	 addressbook.uc9_stateDictionary();
                  }
                  break;
+             case 7:
+                 System.out.println("Enter 1 for CityCount and 2 for StateCount");
+                 int countCityOrState = sc.nextInt();
+                 if(countCityOrState == 1){
+                	 addressbook.uc10_cityCount();
+                 } else if (countCityOrState == 2) {
+                	 addressbook.uc10_stateCount();
+                 }
+                 break;
           default:
               	System.out.println("Please enter valid number.");
               	break;
