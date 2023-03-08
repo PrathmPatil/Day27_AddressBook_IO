@@ -1,7 +1,9 @@
 package com.addressbook;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ContactOperations {
 
@@ -105,6 +107,18 @@ public class ContactOperations {
 	            }
 	        }
 	    }
+	    public void uc8_checkByCity(){
+	        System.out.println("Enter the name of city ");
+	        String city=sc.next();
+	        List<Contacts> checkByCity = contacts.stream().filter(checkCity -> checkCity.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
+	        checkByCity.forEach(checkCity -> System.out.println(checkCity));
+	    }
+	    public void uc8_checkByState(){
+	        System.out.println("Enter the name of state ");
+	        String state=sc.next();
+	        List<Contacts> checkByState = contacts.stream().filter(checkState -> checkState.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
+	        checkByState.forEach(checkState -> System.out.println(checkState));
+	    }
 
 	    public void displayContact(){
 	        System.out.println("Enter the name of contact you want to delete");
@@ -117,4 +131,5 @@ public class ContactOperations {
 	            }
 	        }
 	    }
+	    
 }

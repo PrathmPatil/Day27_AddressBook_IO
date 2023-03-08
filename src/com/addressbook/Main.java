@@ -29,9 +29,20 @@ public class Main extends ContactOperations{
 	    		{
 		    		addressbook.uc4_deleteContact();
 		    		main();
-
+	    		}
+	    		else {
+	    			System.out.println("Contacts list is empty.");
 	    		}
 	    		break;
+	    	case 5:
+                System.out.println("Enter 1 for City and 2 for State");
+                int cityOrState = sc.nextInt();
+                if(cityOrState == 1){
+                	addressbook.uc8_checkByCity();
+                } else if (cityOrState == 2) {
+                	addressbook.uc8_checkByState();
+                }
+                break;
           default:
               	System.out.println("Please enter valid number.");
               	break;
